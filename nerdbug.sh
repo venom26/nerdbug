@@ -6,8 +6,8 @@ rm *.zip
 cat *.txt >> newdomains.md
 rm *.txt
 awk 'NR==FNR{lines[$0];next} !($0 in lines)' alltargets.txtls newdomains.md >> domains.txtls
-echo Hourly scan result $(date +%F-%T) | notify -telegram -telegram-api-key <<enter api key>> -telegram-chat-id <<enter chat id>>
-echo "Total $(wc -l < domains.txtls) new domains found" | notify -telegram -telegram-api-key <<enter api key>> -telegram-chat-id <<enter chat id>>
+echo Hourly scan result $(date +%F-%T) | notify 
+echo "Total $(wc -l < domains.txtls) new domains found" | notify 
 nuclei -ut
 if [ -s ~/domains.txtls ]
 then
